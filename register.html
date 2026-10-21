@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/register.css" />
+    <link rel="stylesheet" href="css/chatbot.css" />
+    <link rel="icon" href="img/CineSeat-dark.png" type="image/png" />
+  </head>
+  <body>
+    <div class="container">
+      <a class="navbar-logo" href="index.html">
+        <img
+          src="img/CineSeat-dark.png"
+          alt="CineSeat Logo"
+          height="70"
+          class="logo-img" />
+      </a>
+      <div class="form">
+        <h1>Register</h1>
+        <form id="registerForm">
+          <input
+            name="username"
+            id="username"
+            class="input"
+            placeholder="Username"
+            type="text"
+            minlength="6"
+            maxlength="18"
+            required />
+          <input
+            name="email"
+            id="email"
+            class="input"
+            placeholder="Email"
+            type="email"
+            required />
+          <input
+            name="password"
+            id="password"
+            class="input"
+            placeholder="Password"
+            type="password"
+            minlength="8"
+            maxlength="20"
+            required />
+          <input
+            name="verifyPassword"
+            class="input"
+            id="verifyPassword"
+            placeholder="Verify password"
+            type="password"
+            minlength="8"
+            maxlength="20"
+            required />
+          <div id="termsBox">
+            <input type="checkbox" id="terms" name="terms" required />
+            <label for="terms" id="termsLabel">
+              I accept the terms of the agreement</label
+            >
+          </div>
+          <button id="submitBtn" type="submit">Register</button>
+        </form>
+
+        <h4 id="register-link">
+          Already have an account?<span><a href="login.html"> Sign in</a></span>
+        </h4>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/12.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore-compat.js"></script>
+    <script src="./js/configFirebase.js"></script>
+    <script src="./js/general.js"></script>
+    <script src="./js/register.js"></script>
+  </body>
+</html>

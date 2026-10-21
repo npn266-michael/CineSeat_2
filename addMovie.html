@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | Add Movie - CineSeat</title>
+    <link
+      rel="stylesheet"
+      href="//use.fontawesome.com/releases/v7.2.0/css/all.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="css/chatbot.css" />
+    <link rel="icon" href="img/CineSeat-dark.png" type="image/png" />
+  </head>
+  <body>
+    <div class="loading">
+      <img src="img/loading.gif" alt="Loading" />
+      <p>Loading...</p>
+    </div>
+    <nav class="navbar">
+      <a class="navbar-logo" href="index.html">
+        <img
+          src="img/CineSeat-dark.png"
+          alt="CineSeat Logo"
+          height="70"
+          class="logo-img" />
+      </a>
+      <button
+        class="burger-menu"
+        id="burger-btn"
+        aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="nav-menu-wrapper" id="nav-menu">
+        <div class="nav-links-container" id="middle-nav">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="admin.html">Dashboard</a>
+          <a class="nav-link" href="moviesAdmin.html">Movies</a>
+          <a class="nav-link" href="ticketsAdmin.html">Tickets</a>
+        </div>
+        <div class="nav-right nav-links-container" id="right-nav">
+          <div id="search-div">
+            <form
+              action="search.html"
+              class="search"
+              method="GET"
+              id="search-form-desktop">
+              <i id="searchImg" class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                class="search-input"
+                name="query"
+                placeholder="Search for movies, news, and more..."
+                required />
+            </form>
+            <a class="nav-link" href="#" id="search-button">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+          </div>
+          <div class="profile-div">
+            <a class="nav-link" href="#" id="profile-button">
+              <i class="fa-solid fa-circle-user"></i>
+            </a>
+            <div class="login-dropdown" id="login-box">
+              <a class="nav-link" href="login.html" id="login">Login</a>
+              <a class="nav-link" href="register.html" id="register"
+                >Register</a
+              >
+            </div>
+            <div class="login-dropdown" id="account-box">
+              <a class="nav-link" href="profile.html" id="myAccount"
+                >My Profile</a
+              >
+              <a class="nav-link" href="moviesAdmin.html" id="myTicket"
+                >Admin</a
+              >
+              <a class="nav-link" href="#" id="logout">Sign Out</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <a class="mobile-link" href="index.html">Home</a>
+      <a class="mobile-link" href="moviesAdmin.html">Movies</a>
+      <a class="mobile-link" href="usersAdmin.html">Users</a>
+      <a class="mobile-link" href="seatsAdmin.html">Seats</a>
+      <form
+        action="search.html"
+        class="searchMobile"
+        method="GET"
+        id="search-form-mobile">
+        <i id="searchImg" class="fa-solid fa-magnifying-glass"></i>
+        <input
+          class="input search-input"
+          type="text"
+          name="query"
+          placeholder="Search for movies, news, and more..."
+          required />
+      </form>
+      <hr style="width: 100%" />
+      <div class="mobile-cont" id="mobile-guest-menu">
+        <a class="mobile-link" href="login.html">Login</a>
+        <a class="mobile-link" href="register.html">Register</a>
+      </div>
+      <div class="mobile-cont" id="mobile-account-menu">
+        <a class="mobile-link" href="profile.html">My Profile</a>
+        <a class="mobile-link" href="moviesAdmin.html">Admin</a>
+        <a class="mobile-link" href="#" id="mobile-logout">Sign Out</a>
+      </div>
+    </div>
+
+    <main class="features">
+      <button class="blank-button" id="returnToAdmin">
+        <i class="fa-solid fa-arrow-left"></i>Back to Admin
+      </button>
+      <section class="feature main-center">
+        <!-- Desktop Image Uploader -->
+        <div class="image-uploader">
+          <div id="dropZone" class="drop-zone">
+            <p>
+              Drag & drop an image here, or
+              <span style="color: #007bff; cursor: pointer">browse files</span>
+            </p>
+            <input
+              type="file"
+              id="fileInput"
+              accept="image/*"
+              style="display: none" />
+          </div>
+
+          <div style="margin-top: 15px">
+            <label for="movie-poster">Or paste image URL:</label>
+            <input
+              class="input"
+              type="url"
+              id="movie-poster"
+              placeholder="https://example.com/image.jpg"
+              style="width: 100%; padding: 8px; box-sizing: border-box" />
+          </div>
+
+          <div style="margin-top: 15px">
+            <div class="poster">
+              <img
+                id="editPoster"
+                src="https://images.unsplash.com/photo-1541336032412-2048a678540d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Movie Poster Preview" />
+            </div>
+          </div>
+        </div>
+
+        <div class="edit-page-container">
+          <h3>Add New Movie</h3>
+
+          <form id="add-movie-form">
+            <div class="form-group">
+              <!-- Mobile Image Uploader -->
+              <div class="image-uploader-mobile">
+                <label>Poster:</label>
+                <div id="dropZoneMobile" class="drop-zone">
+                  <p>
+                    Drag & drop an image here, or
+                    <span style="color: #007bff; cursor: pointer"
+                      >browse files</span
+                    >
+                  </p>
+                  <input
+                    type="file"
+                    id="fileInputMobile"
+                    accept="image/*"
+                    style="display: none" />
+                </div>
+
+                <div style="margin-top: 15px">
+                  <label for="movie-poster-mobile">Or paste image URL:</label>
+                  <input
+                    class="input"
+                    type="url"
+                    id="movie-poster-mobile"
+                    placeholder="https://example.com/image.jpg"
+                    style="width: 100%; padding: 8px; box-sizing: border-box" />
+                </div>
+
+                <div style="margin-top: 15px">
+                  <div class="poster">
+                    <img
+                      id="editPosterMobile"
+                      src="https://images.unsplash.com/photo-1541336032412-2048a678540d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt="Movie Poster Mobile Preview" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="movie-title">Title:</label>
+              <input
+                class="input"
+                type="text"
+                id="movie-title"
+                name="title"
+                required />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="movie-duration">Duration (mins):</label>
+                <input
+                  class="input"
+                  type="number"
+                  id="movie-duration"
+                  name="duration" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="movie-rated">Rated:</label>
+                <select class="select" id="movie-rated">
+                  <option value="" disabled selected>Select Rating</option>
+                  <option value="G">G</option>
+                  <option value="PG">PG</option>
+                  <option value="PG-13">PG-13</option>
+                  <option value="R">R</option>
+                  <option value="NG-17">NG-17</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="movie-release">Release Date:</label>
+                <input
+                  class="input"
+                  type="date"
+                  id="movie-release"
+                  name="airingdate" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="genre-tags">Genre:</label>
+              <div class="form-group tag-container" id="genre-tags"></div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Base Ticket:</label>
+                <div class="currency-wrapper">
+                  <span>$</span>
+                  <input
+                    step="0.01"
+                    min="0"
+                    class="input"
+                    name="base-ticket"
+                    id="base-ticket-price"
+                    type="number" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Premium Ticket:</label>
+                <div class="currency-wrapper">
+                  <span>$</span>
+                  <input
+                    step="0.01"
+                    min="0"
+                    class="input"
+                    name="premium-ticket"
+                    id="premium-ticket-price"
+                    type="number" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Sofa Ticket:</label>
+                <div class="currency-wrapper">
+                  <span>$</span>
+                  <input
+                    step="0.01"
+                    min="0"
+                    class="input"
+                    name="sofa-ticket"
+                    id="sofa-ticket-price"
+                    type="number" />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Description:</label>
+              <textarea
+                class="input"
+                id="movie-desc-input"
+                name="desc"
+                required></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" id="cancel-btn" class="cta-button del-btn">
+                Cancel
+              </button>
+              <button type="submit" class="cta-button heroBtn">
+                Add Movie
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Chat Component -->
+      <button id="chat-toggle" title="Chat với trợ lý">
+        💬
+        <span id="chat-badge"></span>
+      </button>
+
+      <div id="chat-panel">
+        <div id="chat-header">
+          <div class="avatar">🛍️</div>
+          <div class="info">
+            <h3>Trợ lý sản phẩm</h3>
+            <p>
+              <span id="status-dot"></span
+              ><span id="header-status">Đang tải...</span>
+            </p>
+          </div>
+          <button id="close-btn" title="Đóng">✕</button>
+        </div>
+        <div id="messages"></div>
+        <div id="suggestions">
+          <button class="suggestion-chip" onclick="askSuggestion(this)">
+            Danh mục?
+          </button>
+          <button class="suggestion-chip" onclick="askSuggestion(this)">
+            Vé xem phim rẻ nhất?
+          </button>
+          <button class="suggestion-chip" onclick="askSuggestion(this)">
+            Phim được đánh giá cao?
+          </button>
+        </div>
+        <div id="input-area">
+          <textarea
+            id="user-input"
+            rows="1"
+            placeholder="Hỏi về sản phẩm..."></textarea>
+          <button id="send-btn" disabled>➤</button>
+        </div>
+      </div>
+
+      <!-- Add Genre Modal Popup -->
+      <div class="popup-overlay" id="add-genre-popup">
+        <div class="popup">
+          <h3>Add Genre</h3>
+          <input
+            class="input"
+            type="text"
+            id="new-genre-input"
+            placeholder="Enter genre" />
+          <div class="popup-actions">
+            <button id="cancel-genre-btn" class="cta-button del-btn">
+              Cancel
+            </button>
+            <button id="add-genre-btn" class="cta-button heroBtn">
+              Add Genre
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="noti" id="noti"></div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 CineSeat. All rights reserved.</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/12.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore-compat.js"></script>
+    <script src="./js/general.js"></script>
+    <script src="./js/configFirebase.js"></script>
+    <script src="./js/chatbot.js"></script>
+    <script src="./js/addMovie.js"></script>
+  </body>
+</html>
